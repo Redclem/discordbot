@@ -3,6 +3,7 @@ import asyncio
 import random
 
 client = discord.Client()
+version = "0.1"
 
 @client.event
 async def on_ready():
@@ -23,5 +24,7 @@ async def on_message(message):
                 await client.send_message(message.channel,mess)
         if message.content.startswith("!red aut"):
             await client.send_message(message.channel,message.author)
+        if message.content.startswith("!red version"):
+            await client.send_message(message.channel,version)
 
 client.run("NDM4MDQ4NTkzNzc4MzExMTY4.Db_I0w.2yvvfel6n860rxPA72HHYGvYUJo")
