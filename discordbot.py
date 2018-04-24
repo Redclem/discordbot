@@ -15,5 +15,8 @@ async def on_ready():
 async def on_message(message):
     if message.content.startswith("!red dé"):
         await client.send_message(message.channel,str(random.randint(1,6)))
+    if message.content.startswith("!red rep"):
+        await client.delete_message(message)
+        await client.send_message(message.channel,message.content.lstrip("!red rep"))
 
 client.run("NDM4MDQ4NTkzNzc4MzExMTY4.Db_I0w.2yvvfel6n860rxPA72HHYGvYUJo")
