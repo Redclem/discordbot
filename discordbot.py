@@ -13,7 +13,7 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    if message.content.startswith("#dé"):
+    if message.content.startswith("!red dé"):
         await client.send_message(message.channel,str(random.randint(1,6)))
 
 client.run("NDM4MDQ4NTkzNzc4MzExMTY4.Db_I0w.2yvvfel6n860rxPA72HHYGvYUJo")
