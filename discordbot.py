@@ -2,10 +2,11 @@ import discord
 import asyncio
 import random
 from os.path import exists
-from os import remove
+from os import remove,mkdir
 
 client = discord.Client()
-version = "0.7"
+version = "0.8"
+dossier = "tests/"
 
 @client.event
 async def on_ready():
@@ -44,35 +45,37 @@ async def on_message(message):
                     await client.send_message(message.channel,str(random.randint(a,b)))
         elif message.content.startswith("!red mser"):
             await client.send_message(message.channel,"micrausôft sécouryti éèraure")
-        elif message.content.startswith("!red testw"):
+        elif message.content.startswith("!red w"):
             dat = message.content.split(" ")
             if len(dat) < 4:
                 await client.send_message(message.channel, "Erreur 3")
             else:
-                fich = open(dat[2],"w")
+                fich = open(dossier+dat[2],"w")
                 for i in dat[3:]:
                     fich.write(str(i)+" ")
                 fich.close()
                 await client.send_message(message.channel, "Réussi")
-        elif message.content.startswith("!red testr"):
+        elif message.content.startswith("!red r"):
             dat = message.content.split(" ")
             if len(dat) != 3:
                 await client.send_message(message.channel, "Erreur 4")
-            elif exists(dat[2]):
-                fich = open(dat[2],"r")
+            elif exists(dossier+dat[2]):
+                fich = open(dossier+dat[2],"r")
                 texte = fich.read()
                 fich.close()
                 await client.send_message(message.channel, texte.rstrip(" "))
             else:
                 await client.send_message(message.channel, "Erreur 5")
-        elif message.content.startswith("!red testd"):
+        elif message.content.startswith("!red d"):
             dat = message.content.split(" ")
             if len(dat) != 3:
                 await client.send_message(message.channel, "Erreur 6")
-            elif exists(dat[2]):
-                remove(dat[2])
+            elif exists(dossier+dat[2]):
+                remove(dossier+dat[2])
                 await client.send_message(message.channel, "Réussi")
             else:
                 await client.send_message(message.channel, "Erreur 7")
+if not exists(dossier):
+    mkdir(dossier)
 
 client.run("NDM4MDQ4NTkzNzc4MzExMTY4.Db_I0w.2yvvfel6n860rxPA72HHYGvYUJo")
