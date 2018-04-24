@@ -3,7 +3,7 @@ import asyncio
 import random
 
 client = discord.Client()
-version = "0.4"
+version = "0.3"
 
 @client.event
 async def on_ready():
