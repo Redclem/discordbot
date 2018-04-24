@@ -5,7 +5,7 @@ from os.path import exists
 from os import remove
 
 client = discord.Client()
-version = "0.6"
+version = "0.7"
 
 @client.event
 async def on_ready():
@@ -46,7 +46,7 @@ async def on_message(message):
             await client.send_message(message.channel,"micrausôft sécouryti éèraure")
         elif message.content.startswith("!red testw"):
             dat = message.content.split(" ")
-            if len(dat) != 4:
+            if len(dat) < 4:
                 await client.send_message(message.channel, "Erreur 3")
             else:
                 fich = open(dat[2],"w")
@@ -62,7 +62,7 @@ async def on_message(message):
                 fich = open(dat[2],"r")
                 texte = fich.read()
                 fich.close()
-                await client.send_message(message.channel, texte)
+                await client.send_message(message.channel, texte.rstrip(" "))
             else:
                 await client.send_message(message.channel, "Erreur 5")
         elif message.content.startswith("!red testd"):
