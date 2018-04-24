@@ -3,7 +3,7 @@ import asyncio
 import random
 
 client = discord.Client()
-version = "0.4"
+version = "0.5"
 
 @client.event
 async def on_ready():
@@ -41,5 +41,8 @@ async def on_message(message):
                     if a > b:
                         a,b = b,a
                     await client.send_message(message.channel,str(random.randint(a,b)))
+        elif message.content.startswith("!red mser"):
+            await client.send_message(message.channel,"micrausôft sécouryti éèraure")
+
 
 client.run("NDM4MDQ4NTkzNzc4MzExMTY4.Db_I0w.2yvvfel6n860rxPA72HHYGvYUJo")
