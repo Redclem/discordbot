@@ -18,7 +18,7 @@ async def on_message(message):
             await client.send_message(message.channel,str(random.randint(1,6)))
         if message.content.startswith("!red rep"):
             mess = message.content.lstrip("!red rep")
-            if not mess.startswith("^^") or mess.startswith("!"):
+            if not mess.startswith("^^") and not mess.startswith("!"):
                 await client.delete_message(message)
                 await client.send_message(message.channel,mess)
         if message.content.startswith("!red aut"):
