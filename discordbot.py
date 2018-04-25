@@ -2,10 +2,10 @@ import discord
 import asyncio
 import random
 from os.path import exists
-from os import remove,mkdir
+from os import remove,mkdir,listdir
 
 client = discord.Client()
-version = "0.8"
+version = "0.9"
 dossier = "tests/"
 
 @client.event
@@ -75,6 +75,10 @@ async def on_message(message):
                 await client.send_message(message.channel, "Réussi")
             else:
                 await client.send_message(message.channel, "Erreur 7")
+        elif message.content.startswith("!red l"):
+            for i in listdir(dossier):
+                await client.send_message(message.channel, i)
+
 if not exists(dossier):
     mkdir(dossier)
 
